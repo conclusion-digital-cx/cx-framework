@@ -1,0 +1,29 @@
+<script type="module" src="./src/index.js"></script>
+
+
+<div id='app'>
+    Hello {{World}}
+
+    <basic-element></basic-element>
+</div>
+
+<script>
+    console.log(CX)
+        // window.CX = CX.default
+
+    CX.instance({
+        el: 'app'
+    })
+
+    class BasicElement extends HTMLElement {
+        connectedCallback() {
+            this.textContent = 'Just a basic custom element.'
+        }
+    }
+    customElements.define('basic-element', BasicElement)
+
+
+    // CX.component("helloworld").template("<div>Hello World</div>")
+    // CX.component("hello").template("<div>Hello</div>")
+    // CX.component("text").template(`<div>${text}</div>`).prop("text", "Hello Word")
+</script>

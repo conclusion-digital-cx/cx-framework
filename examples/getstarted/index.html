@@ -1,0 +1,25 @@
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script type="module" src="./app.js"></script>
+
+<script>
+    function myFunction() {
+        console.log("Click")
+    }
+</script>
+
+
+
+<my-app id='app'>
+    <my-nav></my-nav>
+
+    <input type='text'> ${title}
+
+    <h1>Hello World</h1>
+    <button onclick='myFunction()'>OK</button>
+    <green-button onclick='console.log(this)'>Cool</green-button>
+
+    <button onclick='console.log(this)'>OK (outside)</button>
+
+    <my-list></my-list>
+</my-app>
