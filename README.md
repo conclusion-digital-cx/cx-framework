@@ -1,4 +1,4 @@
-CX is a a minimal JS Framework based on all the awesome new technologies within the latest browsers
+CX, a minimal JS Framework
 
 Features
 ---
