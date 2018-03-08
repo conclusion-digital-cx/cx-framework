@@ -5,10 +5,13 @@ Features
 - Minimal
 - Inherently it is is a wrapper for the: customElements.define('fancy-tabs', class extends HTMLElement { })
 
+Links
+---
+Render engine https://css-tricks.com/html-templates-via-javascript-template-literals/
+
 
 Get started
 ---
-
 Just open one of the examples local in your browser.
 
 
