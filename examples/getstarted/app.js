@@ -1,9 +1,7 @@
 import CX from '../../src/index.js'
 
-import './components/my-list/index.js'
-
 CX({
-  tag: 'green-button',
+  name: 'green-button',
   template: `<button onclick="console.log('Click Intern')" class='btn-ok'><slot>OK</slot></button>`,
   style: `.btn-ok { color: green; font-size:20px; }`, // Scoped style
   methods: {
@@ -15,11 +13,33 @@ CX({
 })
 
 CX({
-  tag: 'my-nav',
+  name: 'my-list',
+  props: {
+    title: 'Cool list',
+    items: [{ title: 'Item 1' }, { title: 'Item 2' }]
+  },
+  render: props => {
+    let { title, items } = props
+    console.log('Render')
+    return `<h2>${title}</h2><ul>${items
+      .map(item => `<li>The ${item.title}</li>`)
+      .join('')}</ul>`
+  },
+  created: props => {
+    // console.log("Component created");
+    setTimeout(function () {
+      props.title = 'Changed'
+      // console.log("ey")
+    }, 500)
+  }
+})
+
+CX({
+  name: 'my-nav',
   props: {
     title: 'Test App'
   },
-  render: (props) => {
+  render: props => {
     let { title } = props
 
     return `

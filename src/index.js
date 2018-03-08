@@ -10,7 +10,7 @@ https://medium.com/dev-channel/the-case-for-custom-elements-part-2-2efe42ce9133
 // CX Framework
 // ----------
 function createComponent (input) {
-  let { tag, template, props, el, created, render, methods, style, shadow } = input
+  let { name, template, props, el, created, debug, render, methods, style, shadow } = input
 
   // Proxy Props
   if (props) {
@@ -18,11 +18,11 @@ function createComponent (input) {
     var _props = new Proxy(props, {
       set: (target, property, value) => {
         target[property] = value
-        console.log(`Property '${property}' changed to:`, value)
+        if (debug) console.log(`Property '${property}' changed to:`, value)
 
         // Trigger rerender
         template = render(props)
-        console.log(TheComp, template)
+        // console.log(TheComp, template)
         document.querySelector('my-list').render(template)
 
         // Indicate success
@@ -89,9 +89,17 @@ function createComponent (input) {
 
     // Custom methods
     render (template) {
+      // Attach methods
+
+      
       if (shadow) {
         const shadowRoot = this.attachShadow({ mode: 'open' })
         shadowRoot.innerHTML = `
+        <script>
+        function myFunction() {
+          console.log("Click")
+      }
+        </script>
                       <style>${style}</style>
                       ${template}
                     `
@@ -102,5 +110,5 @@ function createComponent (input) {
   }
 
   // Register el
-  customElements.define(tag, TheComp)
+  customElements.define(name, TheComp)
 }

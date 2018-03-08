@@ -2,24 +2,32 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <script type="module" src="./app.js"></script>
 
-<script>
-    function myFunction() {
-        console.log("Click")
-    }
-</script>
+<!-- <script>
+    function myFunction() { console.log("Click") }
+</script> -->
 
 
 
 <my-app id='app'>
-    <my-nav></my-nav>
-
-    <input type='text'> ${title}
-
-    <h1>Hello World</h1>
-    <button onclick='myFunction()'>OK</button>
     <green-button onclick='console.log(this)'>Cool</green-button>
-
-    <button onclick='console.log(this)'>OK (outside)</button>
-
+    <red-button onclick='console.log(this)'>Cool</red-button>
     <my-list></my-list>
 </my-app>
+
+
+<div id="host"></div>
+<template>
+  <h1>Hello World!</h1>
+  <script>
+  var foo = 'bar';
+  function myFunction() { console.log("Click") }
+  </script>
+  <button onclick="myFunction()" class='btn-ok'><slot>OK</slot></button>
+</template>
+<script>
+  var host = document.querySelector('#host');
+  var root = host.createShadowRoot();
+  var template = document.querySelector('template');
+  root.appendChild(document.importNode(template.content, true));
+  console.log('window.foo = ' + window.foo);
+</script>
